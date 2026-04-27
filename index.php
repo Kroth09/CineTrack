@@ -1,13 +1,21 @@
 <?php
-require 'dados.php';
-require 'functions.php';
+session_start();
+require __DIR__ . '/database/Database.php';
+require __DIR__ . '/functions.php';
 
 
 $routes = [
     '' => 'home.controller',
     'home' => 'home.controller',
+    'filme' => 'filme.controller',
+
+    'login' => 'login.controller',
+    'logout' => 'logout.controller',
+    'register' => 'register.controller',
+    'meus-filmes' => 'meus-filmes.controller',
+    'meus-filmes/adicionar' => 'adicionar-filme.controller',
 ];
-$uri = $_SERVER['PATH_INFO'] ?? '/';
+$uri = trim($_SERVER['PATH_INFO'] ?? '', '/');
 
 $pagina = trim($uri, '/');
 

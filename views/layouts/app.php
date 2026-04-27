@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -20,18 +16,19 @@
             <ul class="flex gap-6">
                 <li><a href="/home" class="hover:underline">Explorar</a></li>
                 <li><a href="/meus-filmes" class="hover:underline">Meus Filmes</a></li>
-                <li><a href="/logout" class="hover:underline">(Usuario)</a></li>
+                <?php if(isset($_SESSION['user'])) : ?>
+                    <li><?= $_SESSION['user']['nome'] ?></li>
+                    <li><a href="/logout" class="hover:underline">Sair</a></li>
+                <?php else: ?>
+                <a href="/login" class="hover:underline">Login</a>
+                <?php endif; ?>
             </ul>
         </ul>
-
     </nav>
 </header>
 
 <main class="mx-auto max-w-5xl text-white">
 <!--    Carrega a parte do meu index-->
     <?= $content ?>
-
-
-
 </main>
 </html>

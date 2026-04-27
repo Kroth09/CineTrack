@@ -8,12 +8,15 @@ class Database
     {
         if (self::$pdo === null) {
 
-            $databasePath = __DIR__ . '/database.sqlite';
+          $host = 'localhost';
+          $db = 'cinetrack';
+          $user = 'kroth';
+          $password = 'kroth';
 
-            $dsn = "sqlite:$databasePath";
+            $dsn = "mysql:host=$host;dbname=$db;chatset=utf8mb4";
 
             try {
-                self::$pdo = new PDO($dsn);
+                self::$pdo = new PDO($dsn, $user, $password);
 
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -22,7 +25,6 @@ class Database
                 die("Erro na conexão: " . $e->getMessage());
             }
         }
-
         return self::$pdo;
     }
 }

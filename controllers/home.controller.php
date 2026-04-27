@@ -1,10 +1,21 @@
 <?php
-
-require  __DIR__ . "/../database/Database.php";
-
 $pdo = Database::getConnection();
 
-$stmt = $pdo->query("SELECT * FROM filmes");
+$search = $_GET['search'] ?? '';
+
+if($search){
+    $stmt = $pdo->prepare("
+    select * from filmes
+    where titulo like ?");
+    $termo = "%$search%";
+    $stmt->execute([$termo]);
+} else{
+    $stmt = $pdo->query("select * from filmes");
+}
+
+//$stmt = $pdo->query("SELECT * FROM filmes");
 $filmes = $stmt->fetchAll();
+
+//dd($filmes);
 
 view('home', ['filmes' => $filmes]);
