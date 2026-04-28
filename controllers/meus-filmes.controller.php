@@ -12,7 +12,8 @@ if( ! $usuarioID ) {
 $stmt = $pdo->prepare("
     SELECT filmes.*
     FROM filmes
-    JOIN usuarios_filmes uf ON uf.filme_id = filmes.id
+    INNER JOIN usuarios_filmes uf 
+        ON uf.filme_id = filmes.id
     WHERE uf.usuario_id = ?
 ");
 

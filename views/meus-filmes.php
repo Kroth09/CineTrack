@@ -1,4 +1,4 @@
-<h1 class="text-xl font-bold mb-6">Meus Filmes</h1>
+<h1 class="text-xl font-bold mb-6 mt-6">Meus Filmes</h1>
 
 <?php if (empty($filmes)) : ?>
     <p class="text-gray-400">Você ainda não adicionou nenhum filme.</p>
@@ -6,6 +6,6 @@
 
 <div class="grid grid-cols-2 gap-4">
     <?php foreach ($filmes as $filme) : ?>
-
+        <?php require __DIR__ . '/components/card.php' ?>
     <?php endforeach; ?>
 </div>

@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         'senha' => ['required', 'min:6'],
     ], $_POST);
 
-    $nome = trim($_POST['nome']);
+    $nome = ucfirst(trim($_POST['nome']));
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
 

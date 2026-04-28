@@ -5,17 +5,33 @@ $search = $_GET['search'] ?? '';
 
 if($search){
     $stmt = $pdo->prepare("
-    select * from filmes
-    where titulo like ?");
+    SELECT
+        filmes.*,
+        COALESCE(AVG(uf.nota), 0) as media,
+        COUNT(uf.nota) as total
+    FROM filmes
+    LEFT JOIN usuarios_filmes uf
+        ON uf.filme_id = filmes.id
+    WHERE filmes.titulo LIKE?
+    GROUP BY filmes.id");
+
     $termo = "%$search%";
     $stmt->execute([$termo]);
+
 } else{
-    $stmt = $pdo->query("select * from filmes");
+    $stmt = $pdo->query("
+    SELECT
+        filmes.*,
+        COALESCE(AVG(uf.nota), 0) as media,
+        COUNT(uf.nota) as total
+    FROM filmes
+    LEFT JOIN usuarios_filmes uf
+        ON uf.filme_id = filmes.id
+    GROUP BY filmes.id");
 }
 
-//$stmt = $pdo->query("SELECT * FROM filmes");
 $filmes = $stmt->fetchAll();
 
-//dd($filmes);
+
 
 view('home', ['filmes' => $filmes]);

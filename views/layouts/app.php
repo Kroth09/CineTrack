@@ -17,7 +17,10 @@
                 <li><a href="/home" class="hover:underline">Explorar</a></li>
                 <li><a href="/meus-filmes" class="hover:underline">Meus Filmes</a></li>
                 <?php if(isset($_SESSION['user'])) : ?>
-                    <li><?= $_SESSION['user']['nome'] ?></li>
+                    <li>
+                        <a href="/perfil" class="hover:underline">
+                        <?= $_SESSION['user']['nome'] ?></li>
+                        </a>
                     <li><a href="/logout" class="hover:underline">Sair</a></li>
                 <?php else: ?>
                 <a href="/login" class="hover:underline">Login</a>
@@ -31,4 +34,6 @@
 <!--    Carrega a parte do meu index-->
     <?= $content ?>
 </main>
+
 </html>
+

@@ -8,13 +8,17 @@ $routes = [
     '' => 'home.controller',
     'home' => 'home.controller',
     'filme' => 'filme.controller',
+    'perfil' => 'perfil.controller',
+    'filmes/criar' => 'criar-filme.controller',
 
     'login' => 'login.controller',
     'logout' => 'logout.controller',
     'register' => 'register.controller',
     'meus-filmes' => 'meus-filmes.controller',
     'meus-filmes/adicionar' => 'adicionar-filme.controller',
-];
+    'meus-filmes/remover' => 'remover-filme.controller',
+    'avaliar' => 'avaliar-filme.controller',
+    ];
 $uri = trim($_SERVER['PATH_INFO'] ?? '', '/');
 
 $pagina = trim($uri, '/');

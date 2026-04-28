@@ -8,7 +8,6 @@
             placeholder="Pesquisar...">
         <button type="submit">🔎</button>
     </form>
-
     <!--Filmes-->
     <section class="grid-cols-1 md:grid-cols-2 grid gap-4">
         <!--        Loop para exibir todos os Filmes-->

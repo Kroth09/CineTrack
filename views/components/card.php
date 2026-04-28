@@ -4,8 +4,13 @@
         <img src="/<?= $filme['imagem']?>" class="w-1/3 object-cover rounded">
         <div class="space-y-2">
             <a href="/filme?id=<?= $filme['id'] ?>" class="font-semibold hover:underline"><?= $filme['titulo'] ?></a>
-<!--            <div class="text-xs italic">--><?php //= $filme['autor'] ?><!--</div>-->
-            <div class="text-xs italic">⭐️⭐️⭐️⭐️⭐️ Avaliações</div>
+            <div class="text-xs italic"><?= $filme['diretor'] ?></div>
+            <div class="text-yellow-400 text-lg">
+                <?= number_format($filme['media'], 1)?> ⭐️
+                <span class="text-sm text-gray-400">
+                (<?= $filme['total'] ?> avaliações)
+                </span>
+            </div>
         </div>
         <div class="text-sm mt-4"><?= $filme['descricao']?></div>
     </div>
